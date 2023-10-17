@@ -2,6 +2,7 @@ export default function Editor({
   $target,
   initialState = { title: "", content: "" },
 }) {
+  let isInit = false;
 
   const $editor = document.createElement("div");
   $target.appendChild($editor);
@@ -14,10 +15,13 @@ export default function Editor({
   };
 
   this.render = () => {
+    if (!isInit) {
       $editor.innerHTML = `
         <input type="text" name="title" style="width:600px" value=${this.state.title} />
         <textarea name="content" style="width:600px; height:400px">${this.state.content}</textarea>
       `;
+      isInit = true;
+    }
   };
 
   this.render();
