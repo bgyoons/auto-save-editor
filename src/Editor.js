@@ -23,6 +23,11 @@ export default function Editor({
   this.render();
 
   $editor.addEventListener("keyup", (e) => {
-    this.state = e.target.value;
+    const name = e.target.getAttribute("name");
+
+    if (this.state[name]) {
+      const nextState = { ...this.state, [name]: e.target.value };
+      this.setState(nextState);
+    }
   });
 }
