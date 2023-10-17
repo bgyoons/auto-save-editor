@@ -51,6 +51,17 @@ export default function PostEditPage({ $target, initialState }) {
     const { postId } = this.state;
     if (postId !== "new") {
       const post = await request(`/posts/${postId}`);
+      const tempPost = getItem(postLocalSaveKey, { title: "", content: "" });
+
+      if (tempPost.tempSaveDate && tempPost.tempSaveDate > post.updated_at) {
+        confirm("저장되지 않은 임시 데이터가 있습니다. 불러오시겠습니까?") &&
+          this.setState({
+            ...this.state,
+            post: tempPost,
+          });
+        return;
+      }
+
       this.setState({
         ...this.state,
         post,
