@@ -12,6 +12,8 @@ export default function Editor({
 
   this.setState = (nextState) => {
     this.state = nextState;
+    $editor.querySelector("input[name=title]").value = this.state.title;
+    $editor.querySelector("textarea[name=content]").value = this.state.content;
     this.render();
   };
 
