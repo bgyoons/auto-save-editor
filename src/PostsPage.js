@@ -20,10 +20,7 @@ export default function PostsPage({ $target }) {
   };
 
   this.render = async () => {
-    console.log("render");
     await fetchPosts();
     $target.appendChild($page);
   };
-
-  // this.render();
 }
