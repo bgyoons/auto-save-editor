@@ -1,8 +1,9 @@
-export default function Editor({ $target, initialState = "" }) {
-  const $editor = document.createElement("textarea");
+export default function Editor({
+  $target,
+  initialState = { title: "", content: "" },
+}) {
 
-  $editor.style.width = "500px";
-  $editor.style.height = "500px";
+  const $editor = document.createElement("div");
   $target.appendChild($editor);
 
   this.state = initialState;
@@ -13,7 +14,10 @@ export default function Editor({ $target, initialState = "" }) {
   };
 
   this.render = () => {
-    $editor.value = this.state;
+      $editor.innerHTML = `
+        <input type="text" name="title" style="width:600px" value=${this.state.title} />
+        <textarea name="content" style="width:600px; height:400px">${this.state.content}</textarea>
+      `;
   };
 
   this.render();
