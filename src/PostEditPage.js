@@ -1,6 +1,6 @@
 import Editor from "./Editor.js";
 import { request } from "./request.js";
-import { getItem, setItem } from "./storage.js";
+import { getItem, removeItem, setItem } from "./storage.js";
 
 export default function PostEditPage({ $target, initialState }) {
   const $page = document.createElement("div");
@@ -17,12 +17,27 @@ export default function PostEditPage({ $target, initialState }) {
     initialState: post,
     onEditing: (post) => {
       if (timer !== null) clearTimeout(timer);
-      timer = setTimeout(() => {
+      timer = setTimeout(async () => {
         setItem(postLocalSaveKey, {
           ...post,
           tempSaveDate: new Date(),
         });
-      }, 500);
+
+        const isNew = this.state.postId === "new";
+        if (isNew) {
+          const createdPost = await request("/posts", {
+            method: "POST",
+            body: JSON.stringify(post),
+          });
+          history.replaceState(null, null, `/posts/${createdPost.id}`);
+          removeItem(postLocalSaveKey);
+        } else {
+          await request(`/posts/${this.state.postId}`, {
+            method: "PUT",
+            body: JSON.stringify(post),
+          });
+        }
+      }, 2000);
     },
   });
 
