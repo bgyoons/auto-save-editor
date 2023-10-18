@@ -1,5 +1,6 @@
 import PostEditPage from "./PostEditPage.js";
 import PostsPage from "./PostsPage.js";
+import { initRouter } from "./router.js";
 
 export default function App({ $target }) {
   const postsPage = new PostsPage({ $target });
@@ -23,12 +24,5 @@ export default function App({ $target }) {
   };
 
   this.route();
-
-  window.addEventListener("route-change", (e) => {
-    const { nextUrl } = e.detail;
-    if (nextUrl) {
-      history.pushState(null, null, nextUrl);
-      this.route();
-    }
-  });
+  initRouter(this.route);
 }
