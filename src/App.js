@@ -13,6 +13,7 @@ export default function App({ $target }) {
   });
 
   this.route = () => {
+    $target.innerHTML = "";
     const { pathname } = window.location;
     if (pathname === "/") postsPage.render();
     else if (pathname.indexOf("/posts/") === 0) {
@@ -22,4 +23,12 @@ export default function App({ $target }) {
   };
 
   this.route();
+
+  window.addEventListener("route-change", (e) => {
+    const { nextUrl } = e.detail;
+    if (nextUrl) {
+      history.pushState(null, null, nextUrl);
+      this.route();
+    }
+  });
 }
