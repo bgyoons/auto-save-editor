@@ -15,7 +15,7 @@ export default function App({ $target }) {
   this.route = () => {
     $target.innerHTML = "";
     const { pathname } = window.location;
-    if (pathname === "/") postsPage.render();
+    if (pathname === "/") postsPage.setState();
     else if (pathname.indexOf("/posts/") === 0) {
       const [, , postId] = pathname.split("/");
       postEditPage.setState({ postId });
