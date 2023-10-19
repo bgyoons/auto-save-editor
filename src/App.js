@@ -8,8 +8,7 @@ export default function App({ $target }) {
     $target,
     initialState: {
       postId: "new",
-      title: "",
-      content: "",
+      post: { title: "", content: "" },
     },
   });
 
