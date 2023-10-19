@@ -1,6 +1,6 @@
+import LinkButton from "./LinkButton.js";
 import PostList from "./PostList.js";
 import { request } from "./request.js";
-import { push } from "./router.js";
 
 export default function PostsPage({ $target }) {
   const $page = document.createElement("div");
@@ -10,12 +10,12 @@ export default function PostsPage({ $target }) {
     initialState: [],
   });
 
-  const $newPostButton = document.createElement("button");
-  $newPostButton.textContent = "새 포스트 작성하기";
-  $page.appendChild($newPostButton);
-
-  $newPostButton.addEventListener("click", () => {
-    push("/posts/new");
+  new LinkButton({
+    $target: $page,
+    initialState: {
+      text: "새 포스트 작성하기",
+      link: "/posts/new",
+    },
   });
 
   const fetchPosts = async () => {

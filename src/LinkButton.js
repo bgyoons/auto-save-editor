@@ -13,4 +13,6 @@ export default function LinkButton({ $target, initialState }) {
   $linkButton.addEventListener("click", () => {
     push(this.state.link);
   });
+
+  this.render();
 }
