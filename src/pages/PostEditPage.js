@@ -1,5 +1,5 @@
-import Editor from "./Editor.js";
-import LinkButton from "./LinkButton.js";
+import Editor from "./components/Editor.js";
+import LinkButton from "./components/LinkButton.js";
 import { request } from "./request.js";
 import { getItem, removeItem, setItem } from "./storage.js";
 

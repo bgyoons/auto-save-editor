@@ -1,4 +1,4 @@
-import LinkButton from "./LinkButton.js";
+import LinkButton from "./components/LinkButton.js";
 import PostList from "./PostList.js";
 import { request } from "./request.js";
 

@@ -1,5 +1,5 @@
-import PostEditPage from "./PostEditPage.js";
-import PostsPage from "./PostsPage.js";
+import PostEditPage from "./pages/PostEditPage.js";
+import PostsPage from "./pages/PostsPage.js";
 import { initRouter } from "./router.js";
 
 // * 1. 페이지 컴포넌트 생성
