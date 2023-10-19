@@ -32,11 +32,16 @@ export default function PostEditPage({ $target, initialState }) {
           });
           history.replaceState(null, null, `/posts/${createdPost.id}`);
           removeItem(postLocalSaveKey);
+
+          this.setState({
+            postId: createdPost.id,
+          });
         } else {
-          await request(`/posts/${this.state.postId}`, {
+          await request(`/posts/${post.id}`, {
             method: "PUT",
             body: JSON.stringify(post),
           });
+          removeItem(postLocalSaveKey);
         }
       }, 2000);
     },
