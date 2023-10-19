@@ -1,3 +1,4 @@
+// * 업데이트 될 때마다 이벤트를 통해 onEditing 콜백을 호출하여 상태 전달
 export default function Editor({
   $target,
   initialState = { title: "", content: "" },

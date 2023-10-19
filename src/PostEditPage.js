@@ -3,6 +3,7 @@ import LinkButton from "./LinkButton.js";
 import { request } from "./request.js";
 import { getItem, removeItem, setItem } from "./storage.js";
 
+// * 로컬 스토리지를 이용해 임시 데이터 저장 + 포스팅, 글 불러오기
 export default function PostEditPage({ $target, initialState }) {
   const $page = document.createElement("div");
 
